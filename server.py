@@ -7,6 +7,7 @@
 import time
 import zmq
 import os
+import subprocess
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
@@ -19,6 +20,12 @@ framesToBeProcessed = 160
 n_cores = os.cpu_count()
 print(n_cores)
 
+# os.system("python3 client.py 1")
+# subprocess.call(['open', 'Terminal.app', 'python3', '--args', 'client.py'])
+# op = subprocess.run(['python3','client.py']).stdout
+# print(op)
+# print("he")
+os.system("gnome-terminal -e 'bash -c \"python3 client.py; exec bash\"'")
 
 while isJobPresent:
     #  Wait for next request from client

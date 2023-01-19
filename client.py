@@ -5,6 +5,7 @@
 #
 
 import zmq
+import psutil
 
 context = zmq.Context()
 
@@ -22,5 +23,6 @@ while True:
     socket.send_json(requestPayload)
 
     #  Get the reply.
-    message = socket.recv()
-    print(message)
+    message = socket.recv_json()
+    masterPid = message.get("masterPid")
+    print(masterPid)

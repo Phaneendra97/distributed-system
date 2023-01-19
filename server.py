@@ -25,7 +25,14 @@ print(n_cores)
 # op = subprocess.run(['python3','client.py']).stdout
 # print(op)
 # print("he")
-os.system("gnome-terminal -e 'bash -c \"python3 client.py; exec bash\"'")
+numOfprocessors = 0
+if(n_cores%2==0):
+    numOfprocessors = n_cores//2
+else:
+    numOfprocessors = n_cores+1//2    
+for x in range(numOfprocessors):
+  print(x)
+  os.system("gnome-terminal -e 'bash -c \"python3 client.py; exec bash\"'")
 
 while isJobPresent:
     #  Wait for next request from client
